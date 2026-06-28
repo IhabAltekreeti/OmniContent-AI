@@ -8,7 +8,7 @@ import os, pickle
 from omnicontent.config import MODEL_PATH, get_logger
 log = get_logger("model.train")
 
-DATA_PATH   = "/content/Social Media Engagement Dataset.csv"
+DATA_PATH   = "omnicontent/model/data/Social_Media_Engagement_Dataset.csv"
 SCALER_PATH = "omnicontent/model/scaler.pkl"
 
 

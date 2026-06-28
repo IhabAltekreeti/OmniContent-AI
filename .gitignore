@@ -1,0 +1,27 @@
+# ── Environment & secrets ─────────────────────────────────────
+.env
+*.env
+
+# ── Python ─────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+venv/
+env/
+*.egg-info/
+
+# ── Generated media (runtime output only, not the repo's demo asset) ──
+/*.mp4
+temp_audio.mp3
+temp_video.mp4
+omnicontent_output.mp4
+
+# ── OS / editor junk ────────────────────────────────────────────
+.DS_Store
+.vscode/
+.idea/
+
+# ── ChromaDB local storage ──────────────────────────────────────
+chroma_db/
+*.sqlite3

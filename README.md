@@ -89,6 +89,8 @@ The notebook reads them via `google.colab.userdata` — your keys are never writ
 ### 3. Run the cells top to bottom
 Cell order matters — see the in-notebook section headers. The first run will also train the viral-score model (Layer 1); this takes a couple of minutes.
 
+> **Dataset for training:** The notebook expects `Social_Media_Engagement_Dataset.csv` at Colab's `/content/` folder. This repo includes a copy of that dataset at `omnicontent/model/data/Social_Media_Engagement_Dataset.csv` — download it from here and upload it to `/content/` in your Colab session before running the training cell. (The trained model files — `viral_mlp.keras` and `scaler.pkl` — are already included in this repo, so retraining is only needed if you want to reproduce the training step yourself.)
+
 > This project is Colab-only by design — it's built, tested, and meant to be run inside Google Colab, not on a local machine. The `.env.example` and `requirements.txt` in this repo document the dependencies for reference, but no local setup or support is provided.
 
 ## 📸 How It Works
@@ -119,6 +121,8 @@ There's no Dockerfile and no HuggingFace Spaces deployment live. The project cur
 
 **Free-tier constraints shape some choices.**
 The LLM calls run on OpenRouter's free tier (Llama-3.2-3b-instruct), which is rate-limited and less capable than larger hosted models. This was a deliberate cost constraint, not a technical ceiling — swapping to a paid model is a one-line config change in `pipeline/agents.py`.
+
+**A numpy binary-incompatibility warning may appear on first run.** Installing TensorFlow and Keras via pip inside the same Colab cell that upgrades them can occasionally leave a stale numpy binary loaded in memory, producing a `numpy.dtype size changed` error during model training. If this happens, restart the Colab runtime (Runtime → Restart runtime) and re-run the cells from the top — this is a one-time environment quirk, not a bug in the training code itself.
 
 ---
 
